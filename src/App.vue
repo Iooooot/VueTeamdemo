@@ -1,11 +1,16 @@
 <template>
-  <div id="app">
-    111
-  </div>
+  <echartsPage></echartsPage>
 </template>
 
-<style lang="scss" scoped>
-  #app{
-    color: red;
-  }
+<script>
+import echartsPage from "./views/EchartsPage.vue" 
+export default {
+  components:{
+    echartsPage
+}
+}
+</script>
+
+<style>
+
 </style>

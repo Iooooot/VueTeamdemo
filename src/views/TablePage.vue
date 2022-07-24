@@ -21,7 +21,9 @@
           <!--艺术素质测评指标表格-->
           <div class="art-quality-table">
             <!--table数据-->
-            <div class="art-quality-content"></div>
+            <div class="art-quality-content">
+              <table-one></table-one>
+            </div>
           </div>
         </div>
         <!--美术学科测评维度及解析-->
@@ -36,7 +38,9 @@
           <!--美术学科测评维度及解析表格-->
           <div class="art-subject-table">
             <!--table数据-->
-            <div class="art-subject-content"></div>
+            <div class="art-subject-content">
+              <table-two></table-two>
+            </div>
           </div>
         </div>
         <!--音乐学科测评维度及解析-->
@@ -51,7 +55,9 @@
           <!--音乐学科测评维度及解析表格-->
           <div class="music-subject-table">
             <!--table数据-->
-            <div class="music-subject-content"></div>
+            <div class="music-subject-content">
+              <table-three></table-three>
+            </div>
           </div>
         </div>
         <!--艺术学科总分等级标准-->
@@ -66,7 +72,9 @@
           <!--艺术学科总分等级标准-->
           <div class="aggregate-table">
             <!--table数据-->
-            <div class="aggregate-content"></div>
+            <div class="aggregate-content">
+              <table-four></table-four>
+            </div>
           </div>
         </div>
       </main>
@@ -78,8 +86,19 @@
 </template>
 
 <script>
+import TableOne from "@/views/TableOne";
+import TableTwo from "@/views/TableTwo";
+import TableThree from "@/views/TableThree";
+import TableFour from "@/views/TableFour";
+
 export default {
-  name: "TablePage"
+  name: "TablePage",
+  components: {
+    TableOne,
+    TableTwo,
+    TableThree,
+    TableFour
+  }
 }
 </script>
 
@@ -164,7 +183,6 @@ export default {
         .art-quality-content {
           width: 875px;
           height: 306px;
-          border: 1px solid forestgreen;
           background: url("../assets/images/quality_table_bottom.png") no-repeat bottom;
         }
       }
@@ -174,7 +192,7 @@ export default {
       width: 100%;
       height: 334px;
 
-      .art-subject-table{
+      .art-subject-table {
         width: 100%;
         height: 218px;
         display: flex;
@@ -183,7 +201,6 @@ export default {
         .art-subject-content {
           width: 875px;
           height: 218px;
-          border: 1px solid forestgreen;
           background: url("../assets/images/art_table_bottom.png") no-repeat bottom;
         }
       }
@@ -193,7 +210,7 @@ export default {
       width: 100%;
       height: 334px;
 
-      .music-subject-table{
+      .music-subject-table {
         width: 100%;
         height: 218px;
         display: flex;
@@ -202,7 +219,6 @@ export default {
         .music-subject-content {
           width: 875px;
           height: 218px;
-          border: 1px solid forestgreen;
           background: url("../assets/images/music_table_bottom.png") no-repeat bottom;
         }
       }
@@ -211,7 +227,8 @@ export default {
     .aggregate-box {
       width: 100%;
       height: 210px;
-      .aggregate-table{
+
+      .aggregate-table {
         width: 100%;
         height: 72px;
         display: flex;
@@ -220,7 +237,6 @@ export default {
         .aggregate-content {
           width: 875px;
           height: 72px;
-          border: 1px solid forestgreen;
           background: url("../assets/images/aggregate_table_bottom.png") no-repeat bottom;
         }
       }

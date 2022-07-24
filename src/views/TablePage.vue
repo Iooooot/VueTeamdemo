@@ -118,14 +118,15 @@ export default {
   width: 100%;
   height: 1527px;
   background-image: url("../assets/images/bg.png");
+  background-size: cover;
   padding: 26px;
 
   .main {
     height: 100%;
     width: 100%;
     background-color: #fff;
-    background-image: url("../assets/images/bg_shadow.png");
-
+    background: #FDFDFA url("../assets/images/bg_grid.png") bottom left no-repeat;
+    background-size: 70% 70%; 
     header {
       width: 100%;
       height: 84px;

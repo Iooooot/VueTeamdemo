@@ -1,6 +1,6 @@
 <template>
-  <div class="cardsMain" :style="{backgroundImage: `url(${require('../assets/image/'+cardProp.bkName)})`}">
-    <img :src="require('../assets/image/'+cardProp.bkBorderName)"  alt="bkImg">
+  <div class="cardsMain" :style="{backgroundImage: `url(${require('../assets/images/'+cardProp.bkName)})`}">
+    <img :src="require('../assets/images/'+cardProp.bkBorderName)"  alt="bkImg">
     <div class="cardTitle" :style="{height:cardProp.titleHeight,lineHeight:cardProp.titleHeight,left:cardProp.titleLeft}">
       <span>{{cardProp.title}}</span>
     </div>
@@ -44,7 +44,7 @@ export default {
       font-weight: 600;
       color: #EE7832;
       width: 128px;
-      background-image: url("../assets/image/学业指标标题背景.png");
+      background-image: url("../assets/images/xyBk.png");
 
       span{
         border-top: 2px solid #EE7832;

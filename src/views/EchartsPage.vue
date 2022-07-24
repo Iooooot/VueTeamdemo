@@ -4,7 +4,7 @@
       <header class="clearfix">
         <!-- 头部logo -->
         <div class="logo">
-          <img src="../assets/image/logo.png" alt="logo">
+          <img src="../assets/images/logo.png" alt="logo">
           <span>艺术素质测评云平台</span>
         </div>
         <!-- 头部右侧的图表说明 -->
@@ -12,49 +12,55 @@
           <!-- 说明标签 -->
           <div>
             <span>美术学科艺术素质测评情况</span>
-            <img src="../assets/image/圆角矩形边框.png" alt="border"/>
+            <img src="../assets/images/radioBk.png" alt="border"/>
           </div>
         </div>
         <!-- 头部左侧的学生信息 -->
         <div class="leftStuInfo">
           <div class="NameAndSchool clearfix">
             <span>{{stuName}}</span>
-            <span class="otherInfoTag"><img src="../assets/image/班级.png" alt=""><span style="letter-spacing:26px;">学</span>校：{{schoolName}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/class.png" alt=""><span style="letter-spacing:26px;">学</span>校：{{schoolName}}</span>
           </div>
           <div class="OtherInfo">
-            <span class="otherInfoTag"><img src="../assets/image/班级.png" alt=""><span style="letter-spacing:26px;">班</span>级：{{StuClass}}</span>
-            <span class="otherInfoTag"><img src="../assets/image/年级.png" alt=""><span style="letter-spacing:26px;">年</span>级：{{StuGrade}}</span>
-            <span class="otherInfoTag"><img src="../assets/image/等级.png" alt=""><span style="letter-spacing:26px;">等</span>级：{{Stulevel}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/class.png" alt=""><span style="letter-spacing:26px;">班</span>级：{{StuClass}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/grade.png" alt=""><span style="letter-spacing:26px;">年</span>级：{{StuGrade}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/level.png" alt=""><span style="letter-spacing:26px;">等</span>级：{{Stulevel}}</span>
           </div>
         </div>
       </header>
       <main>
         <div class="clearfix">
           <div class="colorIndex clearfix">
-            <span><i :style="{backgroundColor: chartColors[0]}"></i>最高分</span>
-            <span><i :style="{backgroundColor: chartColors[1]}"></i>平均分</span>
-            <span><i :style="{backgroundColor: chartColors[2]}"></i>最低分</span>
-            <span><i :style="{backgroundColor: chartColors[3]}"></i>最低分</span>
+            <span><i :style="{backgroundColor: chartColors[0]}"></i>课外活动</span>
+            <span><i :style="{backgroundColor: chartColors[1]}"></i>参与度</span>
+            <span><i :style="{backgroundColor: chartColors[2]}"></i>完成度</span>
+            <span><i :style="{backgroundColor: chartColors[3]}"></i>出勤</span>
           </div>
           <echartsCard :cardProp="cardProps[0]" class="clearfix">
-            <div style="width:570px;height: 180px;background-color: black;" class="cardContent"></div>
+            <div class="cardContent">
+                <BarChart :value="barChartData" :chartColor="chartColors"></BarChart>
+            </div>
             <div class="cardContent textContent" style="width:270px;margin-left: 30px;">
-                <img src="../assets/image/小导航.png">
+                <img src="../assets/images/littleNav.png">
                 <div>
-                  谢汶罡同学,你基础指标方面的内容都完成得很好哦。四项内容的得分率都很高,尤其是出勤率与完成度,都是满分。
-                  你参与度与课外活动的得分率也很高哦,说明你对美术学科的学习十分重视,值得表扬,以后也要继续努力呀!
+                  {{textInfo[0]}}
                 </div>
             </div>
           </echartsCard>
         </div>
 
         <echartsCard :cardProp="cardProps[1]" class="clearfix">
-            <div style="width:590px;height: 300px;background-color: black;" class="cardContent"></div>
+            <div style="width:590px;height: 300px;" class="cardContent">
+              <div>
+                <Radar style="float:left"></Radar>
+                <LineChart :test="lineChartData" style="float:left"></LineChart>
+              </div>
+                
+            </div>
             <div class="cardContent textContent" style="width:270px;margin-left: 30px;">
-                <img src="../assets/image/小导航.png">
+                <img src="../assets/images/littleNav.png">
                 <div>
-                  谢汶罡同学,你基础指标方面的内容都完成得很好哦。四项内容的得分率都很高,尤其是出勤率与完成度,都是满分。
-                  你参与度与课外活动的得分率也很高哦,说明你对美术学科的学习十分重视,值得表扬,以后也要继续努力呀!
+                  {{textInfo[1]}}
                 </div>
             </div>
           </echartsCard>
@@ -62,21 +68,18 @@
           <echartsCard :cardProp="cardProps[2]" class="clearfix">
             <div style="width:590px;height: 85px;background-color: black;" class="cardContent"></div>
             <div class="cardContent textContent" style="width:270px;margin-left: 30px;">
-                <img src="../assets/image/小导航.png">
+                <img src="../assets/images/littleNav.png">
                 <div>
-                  谢汶罡同学，在发展指标方面你的表现突出，无论是对于校外学习方面还是艺术特长方面，你的得分都高于班级平均水平，
-                  说明你很喜欢并且乐于参加美术学科的学习，要继续保持哦!
+                  {{textInfo[2]}}
                 </div>
             </div>
           </echartsCard>
 
           <echartsCard :cardProp="cardProps[3]" class="clearfix">
             <div class="textContent">
-                <img src="../assets/image/小导航.png">
+                <img src="../assets/images/littleNav.png">
                 <div>
-                  谢汶罡同学，你在美术学科艺术素质测评的整体表现良好。在基础指标、学业指标和发展指标的学习中，你的表现都在班级名列前茅，
-                  值得表扬!但也不能掉以轻心哦，特别是在学业指标板块，对于创新实践、审美判断、图像识读方面的学习还需要加强。
-                  在努力学习的同时，不要丢下了你对于美术的热爱呀，相信你一定可以通过自己的努力创造出属于你的美术天地，加油哦!
+                  {{textInfo[3]}}
                 </div>
             </div>
           </echartsCard>
@@ -88,6 +91,9 @@
 
 <script>
 import echartsCard from "../components/echartsCard.vue";
+import BarChart from "@/components/barChart.vue";
+import Radar from "@/components/radar.vue";
+import LineChart from "@/components/Line.vue";
 export default {
     data() {
         return {
@@ -106,36 +112,45 @@ export default {
                 title:'基础指标',
                 titleHeight:'33px',
                 titleLeft:'28px',
-                bkName:'基础指标.png',
-                bkBorderName:'基础指标边框.png'
+                bkName:'basicIndex.png',
+                bkBorderName:'basicIndexBk.png'
               },
               {
                 title:'学业指标',
                 titleHeight:'31px',
                 titleLeft:'29px',
-                bkName:'学业指标.png',
-                bkBorderName:'学业指标边框.png'
+                bkName:'studyingIndex.png',
+                bkBorderName:'studyingIndexBk.png'
               },
               {
                 title:'发展指标',
                 titleHeight:'55px',
                 titleLeft:'20px',
-                bkName:'发展指标.png',
-                bkBorderName:'发展指标边框.png'
+                bkName:'developIndex.png',
+                bkBorderName:'developIndexBk.png'
               },
               {
                 title:'综合评价',
                 titleHeight:'44px',
                 titleLeft:'24px',
-                bkName:'综合评价.png',
-                bkBorderName:'综合评价边框.png'
+                bkName:'commentIndex.png',
+                bkBorderName:'commentIndexBk.png'
               }
+            ],
+            textInfo:[
+              '谢汶罡同学,你基础指标方面的内容都完成得很好哦。四项内容的得分率都很高,尤其是出勤率与完成度,都是满分。你参与度与课外活动的得分率也很高哦,说明你对美术学科的学习十分重视,值得表扬,以后也要继续努力呀!'
+              ,'谢汶罡同学,你基础指标方面的内容都完成得很好哦。四项内容的得分率都很高,尤其是出勤率与完成度,都是满分。你参与度与课外活动的得分率也很高哦,说明你对美术学科的学习十分重视,值得表扬,以后也要继续努力呀!'
+              ,'谢汶罡同学，在发展指标方面你的表现突出，无论是对于校外学习方面还是艺术特长方面，你的得分都高于班级平均水平，说明你很喜欢并且乐于参加美术学科的学习，要继续保持哦!',
+              '谢汶罡同学，你在美术学科艺术素质测评的整体表现良好。在基础指标、学业指标和发展指标的学习中，你的表现都在班级名列前茅，值得表扬!但也不能掉以轻心哦，特别是在学业指标板块，对于创新实践、审美判断、图像识读方面的学习还需要加强。在努力学习的同时，不要丢下了你对于美术的热爱呀，相信你一定可以通过自己的努力创造出属于你的美术天地，加油哦!'
+            ],
+            barChartData:[98, 96, 94, 100],
+            lineChartData:[
+              [18.24, 15.58, 24.75, 8.0, 8.0],
+              [24.0, 16.0, 24.0, 3.89, 7.86]
             ]
-            
-          
         }
     },
-    components: { echartsCard }
+    components: { echartsCard, BarChart, Radar, LineChart }
 }
 </script>
 
@@ -143,13 +158,15 @@ export default {
   .container {
         width: 100%;
         height: 100%;
-        background-image: url("../assets/image/背景.png");
+        background-image: url("../assets/images/bk.png");
+        background-size: cover;
         padding: 26px;
 
         .main {
           width: 100%;
           height: 100%;
-          background-color: #FDFDFA;
+          background: #FDFDFA url("../assets/images/bg_grid.png") bottom left no-repeat;
+          background-size: 60% 60%; 
           padding:30px;
 
           header{
@@ -182,7 +199,7 @@ export default {
                 color: #EE7832;
                 text-align: center;
                 border-radius: 30px;
-                background:url("../assets/image/圆角矩形背景.png") -635px -2310px no-repeat;
+                background:url("../assets/images/radioBk2.png") -635px -2310px no-repeat;
                 
                 span{
                   width: 100%;
@@ -215,7 +232,7 @@ export default {
                   height: 25px;
                   color: #646363;
                   padding-left: 30px;
-                  background-image: url("../assets/image/学校等级年级班级背景.png");
+                  background-image: url("../assets/images/classLevelBk.png");
                   background-repeat: no-repeat;
                   font-size: 16px;
                   font-weight: 600;

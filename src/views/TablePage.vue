@@ -22,7 +22,7 @@
           <div class="art-quality-table">
             <!--table数据-->
             <div class="art-quality-content">
-              <table-one></table-one>
+              <table-one :tableData="tableData1"></table-one>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
           <div class="art-subject-table">
             <!--table数据-->
             <div class="art-subject-content">
-              <table-two></table-two>
+              <table-two :tableData="tableData2"></table-two>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@
           <div class="music-subject-table">
             <!--table数据-->
             <div class="music-subject-content">
-              <table-three></table-three>
+              <table-three :tableData="tableData3"></table-three>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
           <div class="aggregate-table">
             <!--table数据-->
             <div class="aggregate-content">
-              <table-four></table-four>
+              <table-four :tableData="tableData4"></table-four>
             </div>
           </div>
         </div>
@@ -93,6 +93,96 @@ import TableFour from "@/components/TableFour";
 
 export default {
   name: "TablePage",
+  data() {
+    return {
+      tableData1: [
+        {
+          title1: "基础指标",
+          title2: "基础知识",
+          content: "音乐、美术等艺术课程学习的出勤率、参与度和学习任务完成情况",
+          score: "25",
+        },
+        {
+          title1: "基础指标",
+          title2: "课外活动",
+          content: "参加学校组织的艺术兴趣小组、艺术社团和各类艺术活动的表现",
+          score: "15",
+        },
+        {
+          title1: "基础指标",
+          title2: "基础知识",
+          content: "理解和掌握音乐、美术等艺术课程标准要求的基础知识的情况",
+          score: "25",
+        },
+        {
+          title1: "基础指标",
+          title2: "基本技能",
+          content: "掌握和运用音乐、美术等艺术课程标准要求的基本技能的情况",
+          score: "25",
+        },
+        {
+          title1: "基础指标",
+          title2: "在校学习",
+          content:
+            "自主参加校外艺术学习、参与艺术实践的情况" +
+            "(主要指参与社区、乡村文化艺术活动，学习优秀的民族民间艺术，欣赏高雅的文艺演出和展览等)",
+          score: "10",
+        },
+        {
+          title1: "基础指标",
+          title2: "艺术特长（加分项）",
+          content:
+            "某一艺术项目的特长\n(包括声乐、器乐、舞蹈、戏剧、戏曲、绘画、书法等)",
+          score: "10",
+        },
+      ],
+      tableData2: [
+        {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+         {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+         {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+         {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+         {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+      ],
+      tableData3: [
+        {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+        {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+        {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+        {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+        {
+          title: "图像识别",
+          content: "指对美术作品、图形、影像及其他视觉符号的观看、识别和解读。",
+        },
+      ],
+      tableData4:[],
+    }
+  },
   components: {
     TableOne,
     TableTwo,

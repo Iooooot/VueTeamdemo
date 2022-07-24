@@ -7,6 +7,7 @@
 <script>
 import * as echarts from "echarts";
 export default {
+    props:['radarData'],
     data() {
         return {
             index: 0,
@@ -106,6 +107,7 @@ export default {
     },
     mounted() {
         var rader = echarts.init(document.querySelector(".rader"));
+        this.option.series[0].data[0].value = this.radarData
         rader.setOption(this.option)
     },
 }

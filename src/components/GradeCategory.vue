@@ -40,9 +40,7 @@ export default {
   },
   mounted() {
     
-    if(this.fullmark == 10){
-      this.score =this.score * 2.5
-    }
+
     let index = parseInt(this.score / 5);
     let value = this.score - index * 5;
     let last = value / 5;

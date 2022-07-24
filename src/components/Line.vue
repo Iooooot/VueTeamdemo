@@ -5,7 +5,7 @@
 <script>
 import * as echarts from "echarts";
 export default {
-    props:["test"],
+    props:["lineChartData"],
     data() {
     
     return {
@@ -143,13 +143,11 @@ export default {
     };
   },
   created() {
-    console.log(this.test)
   },
   mounted() {
-    console.log(this.test)
-    this.option.series[0].data = this.test[0]
+    this.option.series[0].data = this.lineChartData[0]
    
-    this.option.series[1].data = this.test[1]
+    this.option.series[1].data = this.lineChartData[1]
     var myChart = echarts.init(document.querySelector(".line"));
     myChart.setOption(this.option);
   },

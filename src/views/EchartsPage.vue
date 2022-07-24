@@ -18,13 +18,13 @@
         <!-- 头部左侧的学生信息 -->
         <div class="leftStuInfo">
           <div class="NameAndSchool clearfix">
-            <span>{{stuName}}</span>
-            <span class="otherInfoTag"><img src="../assets/images/class.png" alt=""><span style="letter-spacing:26px;">学</span>校：{{schoolName}}</span>
+            <span>{{stuInfo.stuName}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/class.png" alt=""><span style="letter-spacing:26px;">学</span>校：{{stuInfo.schoolName}}</span>
           </div>
           <div class="OtherInfo">
-            <span class="otherInfoTag"><img src="../assets/images/class.png" alt=""><span style="letter-spacing:26px;">班</span>级：{{StuClass}}</span>
-            <span class="otherInfoTag"><img src="../assets/images/grade.png" alt=""><span style="letter-spacing:26px;">年</span>级：{{StuGrade}}</span>
-            <span class="otherInfoTag"><img src="../assets/images/level.png" alt=""><span style="letter-spacing:26px;">等</span>级：{{Stulevel}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/class.png" alt=""><span style="letter-spacing:26px;">班</span>级：{{stuInfo.stuClass}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/grade.png" alt=""><span style="letter-spacing:26px;">年</span>级：{{stuInfo.stuGrade}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/level.png" alt=""><span style="letter-spacing:26px;">等</span>级：{{stuInfo.stulevel}}</span>
           </div>
         </div>
       </header>
@@ -36,6 +36,7 @@
             <span><i :style="{backgroundColor: chartColors[2]}"></i>完成度</span>
             <span><i :style="{backgroundColor: chartColors[3]}"></i>出勤</span>
           </div>
+
           <echartsCard :cardProp="cardProps[0]" class="clearfix">
             <div class="cardContent">
                 <BarChart :value="barChartData" :chartColor="chartColors"></BarChart>
@@ -52,8 +53,8 @@
         <echartsCard :cardProp="cardProps[1]" class="clearfix">
             <div style="width:590px;height: 300px;" class="cardContent">
               <div class="clearfix">
-                <Radar style="float:left"></Radar>
-                <LineChart :test="lineChartData" style="float:left"></LineChart>
+                <Radar style="float:left" :radarData="radarDatas"></Radar>
+                <LineChart :lineChartData="lineChartData" style="float:left"></LineChart>
               </div>
               <div class="indexScore">
                 <div class="basicBox">
@@ -84,13 +85,13 @@
                 <div style="margin-top: 50px;">
                   <div class="development_box">
                   <p style="color:#F19455;">校外学习（10分）</p>
-                  <GradeCategory :score="8.9" :fullmark="10" :operate="indexOper[0]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
-                  <GradeCategory :score="9.5" :fullmark="10" :operate="indexOper[1]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
+                  <GradeCategory :score="8.9*2.5" :fullmark="10" :operate="indexOper[0]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
+                  <GradeCategory :score="9.5*2.5" :fullmark="10" :operate="indexOper[1]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
                   </div>
                   <div class="development_box">
                     <p style="color:#F19455;">艺术特长（10分）</p>
-                     <GradeCategory :score="8.9" :fullmark="10" :operate="indexOper[0]" :indexTitle="indexTitle[2]" :indexValue="indexValue[1]"></GradeCategory>
-                    <GradeCategory :score="8.5" :fullmark="10" :operate="indexOper[1]" :indexTitle="indexTitle[2]" :indexValue="indexValue[1]"></GradeCategory>
+                     <GradeCategory :score="8.9*2.5" :fullmark="10" :operate="indexOper[0]" :indexTitle="indexTitle[2]" :indexValue="indexValue[1]"></GradeCategory>
+                    <GradeCategory :score="8.5*2.5" :fullmark="10" :operate="indexOper[1]" :indexTitle="indexTitle[2]" :indexValue="indexValue[1]"></GradeCategory>
                   </div>
                   
                 </div>
@@ -131,11 +132,13 @@ import GradeCategory from "@/components/GradeCategory.vue";
 export default {
     data() {
         return {
-            stuName: "谢汶罡",
-            schoolName: "德阳天立",
-            Stulevel: "良好",
-            StuGrade: "四年级",
-            StuClass: "7班",
+            stuInfo:{
+              stuName: "谢汶罡",
+              schoolName: "德阳天立",
+              stulevel: "良好",
+              stuGrade: "四年级",
+              stuClass: "7班"
+            },
             chartColors: [
                 "#A6D7C6",
                 "#E9CE68",
@@ -185,6 +188,7 @@ export default {
               [18.24, 15.58, 24.75, 8.0, 8.0],
               [24.0, 16.0, 24.0, 3.89, 7.86]
             ],
+            radarDatas:[83.33, 66.67, 66.67, 75, 80]
 
         }
     },

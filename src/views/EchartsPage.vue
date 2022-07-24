@@ -19,7 +19,7 @@
         <div class="leftStuInfo">
           <div class="NameAndSchool clearfix">
             <span>{{stuName}}</span>
-            <span class="otherInfoTag"><img src="../assets/images/class.png" alt=""><span style="letter-spacing:26px;">学</span>校：{{schoolName}}</span>
+            <span class="otherInfoTag"><img src="../assets/images/school.png" alt=""><span style="letter-spacing:26px;">学</span>校：{{schoolName}}</span>
           </div>
           <div class="OtherInfo">
             <span class="otherInfoTag"><img src="../assets/images/class.png" alt=""><span style="letter-spacing:26px;">班</span>级：{{StuClass}}</span>

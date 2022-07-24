@@ -51,11 +51,23 @@
 
         <echartsCard :cardProp="cardProps[1]" class="clearfix">
             <div style="width:590px;height: 300px;" class="cardContent">
-              <div>
+              <div class="clearfix">
                 <Radar style="float:left"></Radar>
                 <LineChart :test="lineChartData" style="float:left"></LineChart>
               </div>
-                
+              <div class="indexScore">
+                <div>
+                  <p>基础知识（25分）</p>
+                  <p>基础技能（25分）</p>
+                </div>
+                <div>
+                  <div>
+                    <GradeCategory :score="19.00" :operate="indexOper[0]" :indexTitle="indexTitle[0]" :indexValue="indexValue[2]"></GradeCategory>
+                    <GradeCategory :score="25.00" :operate="indexOper[0]" :indexTitle="indexTitle[2]" :indexValue="indexValue[0]"></GradeCategory>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
             <div class="cardContent textContent" style="width:270px;margin-left: 30px;">
                 <img src="../assets/images/littleNav.png">
@@ -66,7 +78,17 @@
           </echartsCard>
 
           <echartsCard :cardProp="cardProps[2]" class="clearfix">
-            <div style="width:590px;height: 85px;background-color: black;" class="cardContent"></div>
+            <div style="width:590px;" class="cardContent clearfix">
+              <div class="indexScore">
+                <div style="margin-top: 50px;">
+                  <p style="color:#F19455;">校外学习（10分）</p>
+                  <p style="color:#F19455;">艺术特长（10分）</p>
+                </div>
+                <div>
+                  <GradeCategory :score="8.5*2.5" :operate="indexOper[1]" :indexTitle="indexTitle[1]" :indexValue="indexValue[1]"></GradeCategory>
+                </div>
+              </div>
+            </div>
             <div class="cardContent textContent" style="width:270px;margin-left: 30px;">
                 <img src="../assets/images/littleNav.png">
                 <div>
@@ -94,6 +116,8 @@ import echartsCard from "../components/echartsCard.vue";
 import BarChart from "@/components/barChart.vue";
 import Radar from "@/components/radar.vue";
 import LineChart from "@/components/Line.vue";
+import ProgressStepChart from '@/components/ProgressStepChart.vue';
+import GradeCategory from "@/components/GradeCategory.vue";
 export default {
     data() {
         return {
@@ -108,6 +132,9 @@ export default {
                 "#BDDDA7",
                 "#FDD23F"
             ],
+            indexOper:['unshift','push'],
+            indexTitle:['学习成绩','班级平均分',''],
+            indexValue: [["0~5", "5~10", "10~15", "15~20", "20~25"],["0~2", "2~4", "4~6", "6~8", "8~10"],["","","","",""]],
             cardProps:[{
                 title:'基础指标',
                 titleHeight:'33px',
@@ -147,14 +174,17 @@ export default {
             lineChartData:[
               [18.24, 15.58, 24.75, 8.0, 8.0],
               [24.0, 16.0, 24.0, 3.89, 7.86]
-            ]
+            ],
+
         }
     },
-    components: { echartsCard, BarChart, Radar, LineChart }
+    components: { echartsCard, BarChart, Radar, LineChart, ProgressStepChart, GradeCategory }
 }
 </script>
 
 <style lang="scss" scoped>
+
+
   .container {
         width: 100%;
         height: 100%;
@@ -277,6 +307,22 @@ export default {
 
             .cardContent{
               float: left;
+            }
+
+            
+            .indexScore{
+              p{
+                font-size: 14px;
+                color: #535354;
+                margin-top: 18px;
+                letter-spacing: 2px;
+                margin-left: 12px;
+              }
+              
+            }
+
+            .indexScore>div{
+                float: left;
             }
 
             .textContent{

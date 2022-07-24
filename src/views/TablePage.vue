@@ -86,10 +86,10 @@
 </template>
 
 <script>
-import TableOne from "@/views/TableOne";
-import TableTwo from "@/views/TableTwo";
-import TableThree from "@/views/TableThree";
-import TableFour from "@/views/TableFour";
+import TableOne from "@/components/TableOne";
+import TableTwo from "@/components/TableTwo";
+import TableThree from "@/components/TableThree";
+import TableFour from "@/components/TableFour";
 
 export default {
   name: "TablePage",

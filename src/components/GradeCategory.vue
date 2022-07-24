@@ -6,12 +6,13 @@
 import * as echarts from "echarts";
 export default {
   name: "GradeCategory",
-  props: ["score", "operate","indexTitle","indexValue"],
+  props: ["score", "operate","indexTitle","indexValue","fullmark"],
   data() {
     return {
       option: {
         grid: {
           top: 0,
+          height: 40
         },
         title: {
           text: this.indexTitle,
@@ -39,7 +40,9 @@ export default {
   },
   mounted() {
     
-
+    if(this.fullmark == 10){
+      this.score =this.score * 2.5
+    }
     let index = parseInt(this.score / 5);
     let value = this.score - index * 5;
     let last = value / 5;
@@ -74,6 +77,9 @@ export default {
             fontSize: '10px'
           },
         }
+        if(this.fullmark == 10){
+          this.option.title.left = 20
+        }
         series.push(data);
       }
       if (this.operate == "unshift") {
@@ -84,6 +90,9 @@ export default {
             color: '#ef823d',
             fontSize: '11px'
           },
+        }
+        if(this.fullmark == 10){
+          this.option.title.right = 40
         }
         series.unshift(data);
       }
@@ -101,7 +110,7 @@ export default {
         fontSize: 10,
         position: "top",
         formatter: params =>{
-          if(this.indexValue[0] == "0~2"){
+          if(this.fullmark == 10){
             return (parseFloat(this.score) / 2.5)
           }
           return this.score
@@ -128,6 +137,7 @@ export default {
 <style>
 .progress {
   width: 240px;
-  height: 50px;
+  height: 40px;
+  /*background-color: red;*/
 }
 </style>

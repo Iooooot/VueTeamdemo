@@ -56,16 +56,17 @@
                 <LineChart :test="lineChartData" style="float:left"></LineChart>
               </div>
               <div class="indexScore">
-                <div>
-                  <p>基础知识（25分）</p>
-                  <p>基础技能（25分）</p>
+                <div class="basicBox">
+                  <p class="tl_text">基础知识（25分）</p>
+                      <!-- 基础知识左 -->
+                  <GradeCategory class="tl_step1" :score="19.00" :operate="indexOper[0]" :indexTitle="indexTitle[0]" :indexValue="indexValue[2]"></GradeCategory>
+                  <!-- 基础知识右 -->
+                    <GradeCategory :score="17.53" :operate="indexOper[1]" :indexTitle="indexTitle[0]" :indexValue="indexValue[2]"></GradeCategory>
                 </div>
-                <div>
-                  <div>
-                    <GradeCategory :score="19.00" :operate="indexOper[0]" :indexTitle="indexTitle[0]" :indexValue="indexValue[2]"></GradeCategory>
-                    <GradeCategory :score="25.00" :operate="indexOper[0]" :indexTitle="indexTitle[2]" :indexValue="indexValue[0]"></GradeCategory>
-                  </div>
-                  
+                <div class="basicBox">
+                  <p>基础技能（25分）</p>
+                   <GradeCategory   :score="25.00" :operate="indexOper[0]" :indexTitle="indexTitle[2]" :indexValue="indexValue[0]"></GradeCategory>
+                    <GradeCategory  :score="25.00" :operate="indexOper[1]" :indexTitle="indexTitle[2]" :indexValue="indexValue[0]"></GradeCategory>
                 </div>
               </div>
             </div>
@@ -81,11 +82,20 @@
             <div style="width:590px;" class="cardContent clearfix">
               <div class="indexScore">
                 <div style="margin-top: 50px;">
+                  <div class="development_box">
                   <p style="color:#F19455;">校外学习（10分）</p>
-                  <p style="color:#F19455;">艺术特长（10分）</p>
+                  <GradeCategory :score="8.9" :fullmark="10" :operate="indexOper[0]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
+                  <GradeCategory :score="9.5" :fullmark="10" :operate="indexOper[1]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
+                  </div>
+                  <div class="development_box">
+                    <p style="color:#F19455;">艺术特长（10分）</p>
+                     <GradeCategory :score="8.9" :fullmark="10" :operate="indexOper[0]" :indexTitle="indexTitle[2]" :indexValue="indexValue[1]"></GradeCategory>
+                    <GradeCategory :score="8.5" :fullmark="10" :operate="indexOper[1]" :indexTitle="indexTitle[2]" :indexValue="indexValue[1]"></GradeCategory>
+                  </div>
+                  
                 </div>
                 <div>
-                  <GradeCategory :score="8.5*2.5" :operate="indexOper[1]" :indexTitle="indexTitle[1]" :indexValue="indexValue[1]"></GradeCategory>
+                  
                 </div>
               </div>
             </div>
@@ -311,19 +321,27 @@ export default {
 
             
             .indexScore{
-              p{
-                font-size: 14px;
-                color: #535354;
-                margin-top: 18px;
-                letter-spacing: 2px;
-                margin-left: 12px;
+              .basicBox {
+                display: flex;
+                height: 40px;
+                p{
+                  font-size: 13px;
+                  line-height: 40px;
+                  color: #565759;
+                }
               }
               
             }
-
-            .indexScore>div{
-                float: left;
+            .development_box{
+              display: flex;
+                height: 40px;
+                p{
+                  font-size: 13px;
+                  line-height: 40px;
+                  color: #565759;
+                }
             }
+
 
             .textContent{
               position: relative;

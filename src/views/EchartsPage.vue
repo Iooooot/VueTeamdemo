@@ -62,7 +62,7 @@
                       <!-- 基础知识左 -->
                   <GradeCategory class="tl_step1" :score="19.00" :operate="indexOper[0]" :indexTitle="indexTitle[0]" :indexValue="indexValue[2]"></GradeCategory>
                   <!-- 基础知识右 -->
-                    <GradeCategory :score="17.53" :operate="indexOper[1]" :indexTitle="indexTitle[0]" :indexValue="indexValue[2]"></GradeCategory>
+                    <GradeCategory :score="17.53" :operate="indexOper[1]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
                 </div>
                 <div class="basicBox">
                   <p>基础技能（25分）</p>
@@ -85,7 +85,7 @@
                 <div style="margin-top: 50px;">
                   <div class="development_box">
                   <p style="color:#F19455;">校外学习（10分）</p>
-                  <GradeCategory :score="8.9*2.5" :fullmark="10" :operate="indexOper[0]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
+                  <GradeCategory :score="8.9*2.5" :fullmark="10" :operate="indexOper[0]" :indexTitle="indexTitle[0]" :indexValue="indexValue[2]"></GradeCategory>
                   <GradeCategory :score="9.5*2.5" :fullmark="10" :operate="indexOper[1]" :indexTitle="indexTitle[1]" :indexValue="indexValue[2]"></GradeCategory>
                   </div>
                   <div class="development_box">
@@ -146,7 +146,7 @@ export default {
                 "#FDD23F"
             ],
             indexOper:['unshift','push'],
-            indexTitle:['学习成绩','班级平均分',''],
+            indexTitle:['学生得分','班级平均分',''],
             indexValue: [["0~5", "5~10", "10~15", "15~20", "20~25"],["0~2", "2~4", "4~6", "6~8", "8~10"],["","","","",""]],
             cardProps:[{
                 title:'基础指标',

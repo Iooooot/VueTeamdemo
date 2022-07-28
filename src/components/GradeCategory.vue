@@ -6,7 +6,7 @@
 import * as echarts from "echarts";
 export default {
   name: "GradeCategory",
-  props: ["score", "operate","indexTitle","indexValue","fullmark"],
+  props: ["score", "operate", "indexTitle", "indexValue", "fullmark"],
   data() {
     return {
       option: {
@@ -39,14 +39,15 @@ export default {
     };
   },
   mounted() {
-    
 
+    //整的有几份
     let index = parseInt(this.score / 5);
+    //最后一份余的
     let value = this.score - index * 5;
+    //最后一份占比
     let last = value / 5;
 
-    // let indexValue = ["0~5", "5~10", "10~15", "15~20", "20~25"];
-    let colors = ["#FFCC4D","#99D4C4","#E3D070","#B0D9A4","#F4793F"];
+    let colors = ["#FFCC4D", "#99D4C4", "#E3D070", "#B0D9A4", "#F4793F"].reverse();
     let partValue = [0, 5, 10, 15, 20];
     let series = [];
 
@@ -57,40 +58,35 @@ export default {
         data: [1],
         barWidth: 5,
         yAxisIndex: 0,
-        itemStyle: colors[i],
-        label: {
-          show: true,
-          color: "black",
-          fontSize: 10,
-          position: "bottom",
-          formatter: this.indexValue[i],
+        itemStyle: {
+          color: colors[i]
         },
       };
       if (this.operate == "push") {
-        this.option.title={
+        this.option.title = {
           text: this.indexTitle,
-          left:15,
-          textStyle: {
-            color: '#ef823d',
-            fontSize: '10px'
-          },
-        }
-        if(this.fullmark == 10){
-          this.option.title.left = 20
-        }
-        series.push(data);
-      }
-      if (this.operate == "unshift") {
-        this.option.title={
-          text: this.indexTitle,
-          right:30,
+          left: 18,
           textStyle: {
             color: '#ef823d',
             fontSize: '11px'
           },
         }
-        if(this.fullmark == 10){
-          this.option.title.right = 40
+        if (this.fullmark == 10) {
+          this.option.title.left = 18
+        }
+        series.push(data);
+      }
+      if (this.operate == "unshift") {
+        this.option.title = {
+          text: this.indexTitle,
+          right: 18,
+          textStyle: {
+            color: '#ef823d',
+            fontSize: '11px'
+          },
+        }
+        if (this.fullmark == 10) {
+          this.option.title.right = 18
         }
         series.unshift(data);
       }
@@ -102,18 +98,6 @@ export default {
       data: [last],
       barWidth: 5,
       yAxisIndex: 0,
-      label: {
-        show: true,
-        color: "#F19253",
-        fontSize: 10,
-        position: "top",
-        formatter: params =>{
-          if(this.fullmark == 10){
-            return (parseFloat(this.score) / 2.5)
-          }
-          return this.score
-        } 
-      },
     };
     if (this.operate == "push") {
       series.push(data);
